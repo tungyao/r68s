@@ -29,15 +29,8 @@ sed -i '$a src-git helloworld https://github.com/fw876/helloworld.git' feeds.con
 sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' target/linux/rockchip/Makefile
 # 修改默认IP为 192.168.100.1
 sed -i 's/192.168.1.1/192.168.100.1/g' package/base-files/files/bin/config_generate
-sed -i "/set network.\$1.proto='static'/{s/$/\n\t\t\t\tset network.\$1.gateway='192.168.1.1'/}" package/base-files/files/bin/config_generate
-sed -i "/set network.\$1.proto='static'/{s/$/\n\t\t\t\tset network.\$1.dns='223.5.5.5 192.168.1.1'/}" package/base-files/files/bin/config_generate
-# 修改默认主机名
-sed -i '/uci commit system/i\uci set system.@system[0].hostname='cym-router'' package/lean/default-settings/files/zzz-default-settings
 # # 加入编译者信息
-sed -i "s/OpenWrt /Cymrouter build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
-# 修改默认主题
-#sed -i "s/luci-theme-bootstrap/luci-theme-argon/g" feeds/luci/collections/luci/Makefile
-
+sed -i "s/OpenWrt /TungYao build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
 cat ../r68s.conf > ./.config
 
 sed -i 's/^[ \t]*//g' ./.config
