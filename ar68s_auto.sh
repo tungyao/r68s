@@ -25,7 +25,7 @@ git pull
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 #修改内核版本
-sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' target/linux/rockchip/Makefile
+sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=6.6/g' target/linux/rockchip/Makefile
 # 修改默认IP为 192.168.100.1
 sed -i 's/192.168.1.1/192.168.100.1/g' package/base-files/files/bin/config_generate
 cat ../r68s.conf > ./.config
